@@ -6,6 +6,7 @@ module SeoMeta
     def attributes
       @@attributes ||= {
         :browser_title => :string,
+        :meta_keywords => :string,
         :meta_description => :text
       }
     end
