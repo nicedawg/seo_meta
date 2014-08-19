@@ -114,6 +114,29 @@ from a `form_for` block, for example:
 <% end %>
 ```
 
+## ActiveAdmin
+
+In order to administer a model's associated meta tags via ActiveAdmin, you'll
+need to do the following:
+
+```ruby
+# add the seo_meta tag's fields to the list of permitted params
+permit_params :body, :site_id, SeoMeta.attributes.keys
+```
+
+```ruby
+# add the partial to the active admin form
+form :html => { :enctype => "multipart/form-data" } do |f|
+  f.inputs do
+    f.input :body
+  end
+  f.inputs do
+    f.template.render partial: '/seo_meta/form', locals: { f: f }
+  end
+  f.actions
+end
+```
+
 ## Anything else?
 
 Nope, all done!
